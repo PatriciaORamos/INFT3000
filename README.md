@@ -26,7 +26,9 @@ the new picture into the images directory, and update the picture name in the da
 👍 Delete the item image when deleting an item
 
 ## feature/cap1-WYSIWYG-editor
+🏗️ working ...
 
 ## feature/cap1-authentication
+🕛 waiting ...
 
 # Capstone Deliverable #2
