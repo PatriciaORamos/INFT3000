@@ -22,3 +22,5 @@ DELETE query to execute
 👍 Add the picture upload field in the edit item form. If the field is blank (i.e. no new picture to 
 replace), do nothing to the existing picture. If the field isn’t blank, delete the old picture, move 
 the new picture into the images directory, and update the picture name in the database
+
+👍 Delete the item image when deleting an item
