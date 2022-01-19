@@ -17,3 +17,8 @@
 when there are no items currently in that category. Also within the delete category method on 
 the controller, ensure that there are no items currently using the category before allowing the 
 DELETE query to execute
+
+## feacture/cap1-item-picture-upload
+👍 Add the picture upload field in the edit item form. If the field is blank (i.e. no new picture to 
+replace), do nothing to the existing picture. If the field isn’t blank, delete the old picture, move 
+the new picture into the images directory, and update the picture name in the database
