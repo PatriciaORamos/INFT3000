@@ -4,13 +4,13 @@
 
 ## feature/configuration
 👍 Contem original project after run command and change file.
-command: composer install
-command: npm install
-command: npm run dev
-change file: env
-command: php artisan migrate
-command: php artisan storage:link
-command: php artisan serve
+<br />command: composer install
+<br />command: npm install
+<br />command: npm run dev
+<br />change file: env
+<br />command: php artisan migrate
+<br />command: php artisan storage:link
+<br />command: php artisan serve
 
 ## feature/cap1-category-delete
 👍 Add delete functionality to the manage categories page but only show the delete button 
