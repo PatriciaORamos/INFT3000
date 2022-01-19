@@ -63,9 +63,9 @@ class ItemController extends Controller
 
         //save image
         if ($request->hasFile('picture')) {
-            $image = $request->file('picture');
 
-            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image = $request->file('picture');            
+            $filename = $image->getClientOriginalName();
             $location ='images/items/' . $filename;
 
             $image = Image::make($image);
@@ -137,7 +137,7 @@ class ItemController extends Controller
         if ($request->hasFile('picture')) {
             $image = $request->file('picture');
 
-            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $filename = $image->getClientOriginalName();
             $location ='images/items/' . $filename;
 
             $image = Image::make($image);

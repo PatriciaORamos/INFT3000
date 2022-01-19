@@ -62,6 +62,7 @@ Laravel Project
 			    {{ Form::file('picture', null, ['class'=>'form-control', 
 				                                       'style'=>'',
 													   'data-parsley-required'=>'']) }}
+				
 		
 		</div>
 		<div class="col-md-4">
