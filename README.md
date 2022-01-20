@@ -30,15 +30,14 @@ the new picture into the images directory, and update the picture name in the da
 
 ## Add user authentication
 #### feature/cap1-authentication 
-🏗️ working ...
-Add user authentication to your app using laravel’s make auth feature. Modify your item and 
+👍 Add user authentication to your app using laravel’s make auth feature. Modify your item and 
 category controllers to be accessible only to authenticated users. Also, modify your routes for 
 items and categories to be accessible only to authenticated users.
 
 # Capstone Deliverable #2
 ## Web Site Design
 #### feature/cap2-web-site-design  
-🕛 waiting ...
+🏗️ working ...
 Your product list page must have a minimum of 3 categories (links) in a vertical table at the 
 left of the page (which will be pulled from the database). Your product listing (table on right) 
 will display all products in the database. You must mock-up at least 2 rows of products. For 
@@ -46,3 +45,10 @@ each product, you will display a thumbnail picture, the title of the item, the p
 now” button. When you click on either the thumbnail or title, you will be brought to the details 
 page where you will display a larger picture plus all other fields that are required to be stored 
 (title, product_id, description, price, quantity, sku).
+
+## Connect inventory system to design prototype
+#### feature/cap2-connect-inventory-design 
+🕛 waiting .
+o Create a public controller and routes for your public store pages. Categories and items are 
+to be passed to the views and dynamically displayed. When a category link is followed, only 
+products in that category are to be displayed
