@@ -4,10 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Item;
 use Session;
 
 class CategoryController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -109,6 +121,21 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        if ($category != null) {
+            $name = $category->category;
+            $items = Item::all()->where('category_id', $id);           
+            if (sizeof($items) != 0) {
+                 Session::flash('error', 'There are item using category');
+                 
+            } else {
+                 $category->delete();    
+                 Session::flash('success', $name.' has been deleted'); 
+            }
+               
+        } else {
+            Session::flash('error', 'category not found');
+        }
+        return redirect()->route('categories.index');
     }
 }

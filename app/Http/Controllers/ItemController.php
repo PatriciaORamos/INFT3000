@@ -12,6 +12,16 @@ use Session;
 class ItemController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -63,9 +73,9 @@ class ItemController extends Controller
 
         //save image
         if ($request->hasFile('picture')) {
-            $image = $request->file('picture');
 
-            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image = $request->file('picture');            
+            $filename = $image->getClientOriginalName();
             $location ='images/items/' . $filename;
 
             $image = Image::make($image);
@@ -137,7 +147,7 @@ class ItemController extends Controller
         if ($request->hasFile('picture')) {
             $image = $request->file('picture');
 
-            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $filename = $image->getClientOriginalName();
             $location ='images/items/' . $filename;
 
             $image = Image::make($image);

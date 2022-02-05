@@ -10,6 +10,7 @@ Laravel Project
 
 @section('scripts')
 {!! Html::script('/bower_components/parsleyjs/dist/parsley.min.js') !!}
+{!!	Html::script('//cdn.ckeditor.com/4.14.0/standard/ckeditor.js') !!}
 @endsection
 
 @section('css')
@@ -39,8 +40,7 @@ Laravel Project
 				</select>
 
 			    {{ Form::label('description', 'Description:', ['style'=>'margin-top:20px']) }}
-			    {{ Form::textarea('description', null, ['class'=>'form-control', 
-				                                 'data-parsley-required'=>'']) }}
+			    {{ Form::textarea('description', null, ['class'=>'ckeditor form-control', 'data-parsley-required'=>'']) }}
 
 				{{ Form::label('price', 'Price:', ['style'=>'margin-top:20px']) }}
 			    {{ Form::text('price', null, ['class'=>'form-control', 'style'=>'', 
@@ -56,12 +56,11 @@ Laravel Project
 
 				@if ($item->picture != "")
 				    <p style='margin-top:20px'>Current Image:<br><img src="{{ Storage::url('images/items/'.$item->picture) }}" style='height:100px;' ></p>
-			    @endif
+			  @endif
 
 				{{ Form::label('picture', 'Picture:', ['style'=>'margin-top:20px']) }}
-			    {{ Form::file('picture', null, ['class'=>'form-control', 
-				                                       'style'=>'',
-													   'data-parsley-required'=>'']) }}
+			    {{ Form::file('picture', null, ['class'=>'form-control', 'style'=>'', 'data-parsley-required'=>'']) }}
+				
 		
 		</div>
 		<div class="col-md-4">

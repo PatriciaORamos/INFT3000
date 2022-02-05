@@ -10,6 +10,7 @@ Laravel Project
 
 @section('scripts')
 {!! Html::script('/bower_components/parsleyjs/dist/parsley.min.js') !!}
+{!!	Html::script('//cdn.ckeditor.com/4.14.0/standard/ckeditor.js') !!}
 @endsection
 
 @section('css')
@@ -40,7 +41,7 @@ Laravel Project
 				</select>
 
 			    {{ Form::label('description', 'Description:', ['style'=>'margin-top:20px']) }}
-			    {{ Form::textarea('description', null, ['class'=>'form-control', 
+			    {{ Form::textarea('description', null, ['class'=>'ckeditor form-control', 
 				                                 'data-parsley-required'=>'']) }}
 
 				{{ Form::label('price', 'Price:', ['style'=>'margin-top:20px']) }}
