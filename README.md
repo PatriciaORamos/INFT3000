@@ -46,7 +46,7 @@ page where you will display a larger picture plus all other fields that are requ
 ## Connect inventory system to design prototype
 #### feature/cap2-connect-inventory-design 
 🏗️ working ...
-o Create a public controller and routes for your public store pages. Categories and items are 
+Create a public controller and routes for your public store pages. Categories and items are 
 to be passed to the views and dynamically displayed. When a category link is followed, only 
 products in that category are to be displayed
 
