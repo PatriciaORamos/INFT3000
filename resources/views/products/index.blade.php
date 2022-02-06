@@ -42,7 +42,7 @@ Laravel Project
 					<th></th>
 				</tr>
 				<tr>
-					<td><img src="https://cdn-images.article.com/products/SKU419/2890x1500/image60553.jpg?fit=max&w=100&q=40%202x" alt="Girl in a jacket"></td>
+					<td><a href="{{ route('products.show', 1) }}"><img src="https://cdn-images.article.com/products/SKU419/2890x1500/image60553.jpg?fit=max&w=100&q=40%202x" alt="Girl in a jacket"></a></td>
 					<td><a href="{{ route('products.show', 1) }}">Sofa</a></td>
 					<td>150.00</td>
 					<td><button type="button" class="btn btn-info">Buy Now</button></td>
