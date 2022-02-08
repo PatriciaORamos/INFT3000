@@ -56,7 +56,7 @@ matches the width in your product display mockup (prefix filename with lrg_).
 o Use laravel’s image intervention to resize and save your image
 
 # Capstone Deliverable #3 
-#### feature/cap2-shopping-cart-table
+#### ☕ feature/cap2-shopping-cart-table ☕
 🏗️ working ... <br />
 To keep track of the shopper, you must use session variables to identify them. You will 
 create a session_id and determine their IP address and set them as a session variables 
