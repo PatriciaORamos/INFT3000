@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::resource('items', '\App\Http\Controllers\ItemController');
 Route::resource('categories', '\App\Http\Controllers\CategoryController');
 Route::resource('products', '\App\Http\Controllers\ProductController');
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,3 +26,4 @@ Route::get('/', function () {
 Auth::routes(['register' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/products/{category_id}/search', [\App\Http\Controllers\ProductController::class, 'search'])->name('products.search');

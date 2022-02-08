@@ -73,14 +73,18 @@ class ItemController extends Controller
 
         //save image
         if ($request->hasFile('picture')) {
-
-            $image = $request->file('picture');            
+            
+            $image = $request->file('picture');
             $filename = $image->getClientOriginalName();
-            $location ='images/items/' . $filename;
+            $img_resize = Image::make($image->getRealPath());
+            $img_resize->resize(100,100);
+            $img_resize->save(public_path('storage/images/items/tn_'. $filename));
 
-            $image = Image::make($image);
-            Storage::disk('public')->put($location, (string) $image->encode());
-            $item->picture = $filename;
+            $img_resize_lrg = Image::make($image->getRealPath());
+            $img_resize_lrg->resize(400,400);
+            $img_resize_lrg->save(public_path('storage/images/items/lrg_'. $filename));
+
+            $item->picture = $filename;   
         }
 
         $item->save(); //saves to DB
@@ -145,20 +149,25 @@ class ItemController extends Controller
 
         //save image
         if ($request->hasFile('picture')) {
+            $oldFilename = $item->picture;            
+            $old_img_path = public_path('storage/images/items/').$oldFilename; 
+            
             $image = $request->file('picture');
-
             $filename = $image->getClientOriginalName();
-            $location ='images/items/' . $filename;
 
-            $image = Image::make($image);
-            Storage::disk('public')->put($location, (string) $image->encode());
+            $img_resize = Image::make($image->getRealPath());
+            $img_resize->resize(100,100);
+            $img_resize->save(public_path('storage/images/items/tn_'. $filename));
 
-            if (isset($item->picture)) {
-                $oldFilename = $item->picture;
-                Storage::delete('public/images/items/'.$oldFilename);                
+            $img_resize_lrg = Image::make($image->getRealPath());
+            $img_resize_lrg->resize(400,400);
+            $img_resize_lrg->save(public_path('storage/images/items/lrg_'. $filename));
+
+            if($old_img_path != null || $old_img_path != '') {
+                unlink($old_img_path);
             }
 
-            $item->picture = $filename;
+            $item->picture = $filename;   
         }
 
         $item->save(); //saves to DB
@@ -181,7 +190,8 @@ class ItemController extends Controller
         $item = Item::find($id);
         if (isset($item->picture)) {
             $oldFilename = $item->picture;
-            Storage::delete('public/images/items/'.$oldFilename);                
+            $old_img_path = public_path('storage/images/items/').$oldFilename; 
+             unlink($old_img_path);              
         }
         $item->delete();
 

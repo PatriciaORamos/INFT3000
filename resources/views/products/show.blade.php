@@ -20,17 +20,17 @@ Laravel Project
 </div>
 
 	<div class="row">
-			<div class="col-md-4">          
-					<img src="https://cdn-images.article.com/products/SKU419/2890x1500/image60553.jpg?fit=max&w=300&q=40%202x" alt="Girl in a jacket">
+			<div class="col-md-6">          
+				<img src="{{ Storage::url('images/items/lrg_'.$item->picture) }}" >
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-6">
 					<h2>Ergonomic Desk Sofa</h2>
-					<h4 style="color: rgb(0, 157, 255);"><strong>$200</strong></h4>
-					<p style="color:rgb(99, 100, 101)" >Santiago who travels from his homeland in Spain to the Egyptian desert in search of a treasure buried near the Pyramids. Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor incididunt ut labore et. Lorem ipsum dolor sit amet, consectetur adipiscing elitet.</p>
-					<p style="color:rgb(99, 100, 101)">id: 1</p>
-					<p style="color:rgb(99, 100, 101)">sku: ISEDS10</p>
-					<p style="color:rgb(99, 100, 101)">quantidade: 10</p>
-					<p style="color:rgb(99, 100, 101)">category: Sofa</p>          
+					<h4 style="color: rgb(0, 157, 255);"><strong>${{$item->price}}</strong></h4>
+					<p style="color:rgb(99, 100, 101)" >{{strip_tags($item->description)}}</p>
+					<p style="color:rgb(99, 100, 101)">id: {{$item->id}}</p>
+					<p style="color:rgb(99, 100, 101)">sku: {{$item->sku}}</p>
+					<p style="color:rgb(99, 100, 101)">quantidade: {{$item->quantity}}</p>
+					<p style="color:rgb(99, 100, 101)">category: {{$item->category_id}}</p>          
 			</div>
 	</div>
 

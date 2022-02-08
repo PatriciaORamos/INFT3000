@@ -8,6 +8,10 @@ Item List
 Laravel Project
 @endsection
 
+@section('scripts')
+{!! Html::script('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js') !!}
+@endsection
+
 @section('content')
 
 <div class="row">
@@ -18,37 +22,44 @@ Laravel Project
 		<hr />
 	</div>
 </div>
-
-	<div class="row">
 		<div class="col-md-4">
+			{{-- <form action="{{ route('products.search') }}" method="POST">
+				@csrf
+				<input type="text" name="search" placeholder="Filtrar:">
+				<button type="submit">Filtrar</button>
+			</form> --}}
 			<table>
-				<tr>
-					<th>Category</th>
-				</tr>
-				<tr>
-					<td>Sofa</td>
-				</tr>
-				<tr>
-					<td>Lighting</td>
-				</tr>
+					<tr>
+							<th>Category</th>
+					</tr>
+					<tr><td ><a href={{ URL::route('products.index') }}>All Categories</a></td></tr>
+						@foreach ($categories as $category)
+								<tr><td ><a href={{ route('products.search', $category->id) }}>{{$category->name}}</a></td></tr>
+						@endforeach 
 			</table>
 		</div>
 		<div class="col-md-8">
-			<table class="table">
-				<tr>
-					<th>Image</th>
-					<th>Title</th>
-					<th>Price</th>
-					<th></th>
-				</tr>
-				<tr>
-					<td><a href="{{ route('products.show', 1) }}"><img src="https://cdn-images.article.com/products/SKU419/2890x1500/image60553.jpg?fit=max&w=100&q=40%202x" alt="Girl in a jacket"></a></td>
-					<td><a href="{{ route('products.show', 1) }}">Sofa</a></td>
-					<td>150.00</td>
-					<td><button type="button" class="btn btn-info">Buy Now</button></td>
-				</tr>
-			</table>
-		</div>
+				<table class="table table-striped">
+					  <tr>
+						 		<th>Image</th>
+								<th>Title</th>
+								<th>Price</th>
+								<th></th>
+						</tr>
+						<tbody>
+
+							@foreach ($items as $item)				
+								<tr>
+									<td><a href={{ route('products.show', $item->id) }}><img src='{{ Storage::url('images/items/tn_'.$item->picture) }}'></a></td>
+									<td><a href={{ route('products.show', $item->id) }}>{{ $item->title }}</a></td>
+									<td>{{ $item->price }}</td>
+									<td><button type='button' class='btn btn-info'>Buy Now</button></td>
+								</tr>
+							@endforeach	
+						</tbody>
+				</table>
+		</div>	
 	</div>
+
 
 @endsection

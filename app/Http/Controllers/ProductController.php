@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $items = Item::all()->sortByDesc("id");//sortByDesc
+        $items = Item::all()->sortByDesc("id");
         $categories = Category::all('name', 'id');
         return view('products.index')->with('items', $items)->with('categories', $categories);
     }
@@ -49,7 +49,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return view('products.show');
+        $item = Item::find($id);
+        $categories = Category::all()->sortBy('name');
+        return view('products.show')->with('item',$item)->with('categories',$categories);
     }
 
     /**
@@ -83,6 +85,24 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
+        
+    }
+
+    /**
+     * Search products by category_id
+     * 
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function search($id){
+        $items = [];
+        if($id != ""){
+            $items = Item::all()->where('category_id', $id)->sortByDesc("id");
+            $categories = Category::all('name', 'id');
+            return view('products.index')->with('items', $items)->with('categories', $categories);
+        } else {            
+            return redirect('/products');
+        }
         
     }
 }
