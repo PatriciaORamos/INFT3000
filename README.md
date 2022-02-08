@@ -45,14 +45,12 @@ page where you will display a larger picture plus all other fields that are requ
 
 ## Connect inventory system to design prototype
 #### feature/cap2-connect-inventory-design 
-👍Create a public controller and routes for your public store pages. Categories and items are 
+👍 Create a public controller and routes for your public store pages. Categories and items are 
 to be passed to the views and dynamically displayed. When a category link is followed, only 
 products in that category are to be displayed
 
 ## Add image resizing into add item/check add item and edit item/check edit item
-#### feature/cap2-prefix-resize-image
-🏗️ working .. 
-After the image is moved into the images directory, resize the picture so that the thumbnail 
+👍 After the image is moved into the images directory, resize the picture so that the thumbnail 
 matches the width in your mockup (prefix filename with tn_). Do a second resize so this one 
 matches the width in your product display mockup (prefix filename with lrg_). 
 o Use laravel’s image intervention to resize and save your image
@@ -64,12 +62,12 @@ create a session_id and determine their IP address and set them as a session var
 in your browser. If you cannot retrieve a session id and IP from the session variables, 
 you must set them up. This code should appear on every public page.
 
-#### feature/XXXX
 🕛 waiting ... 
-o When you press the “add to cart” button, you will insert the item_id, the session_id, IP 
+When you press the “add to cart” button, you will insert the item_id, the session_id, IP 
 address, and quantity of 1 into a table called shopping_cart. You will then redirect to a 
 shopping cart page.
-o On the shopping cart page, you will retrieve all items for that user and display the title, 
+
+🕛 waiting ... On the shopping cart page, you will retrieve all items for that user and display the title, 
 quantity and price in a table. The only field that should be editable is the quantity field. 
 To the right of the listing is an update and remove buttons. When update is pressed, you 
 will call a route called update_cart. The quantity is updated in the associated controller 
@@ -77,4 +75,5 @@ method (do not exceed item quantity in the database), and you are redirected bac
 the shopping cart. When the remove button is pressed, you call the remove_item route, 
 delete the item from the shopping cart table in the associated controller method and 
 redirect back to the shopping cart
-o At the bottom of the items, you should display the subtotal.
+
+🕛 waiting ...  At the bottom of the items, you should display the subtotal.
