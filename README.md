@@ -56,7 +56,7 @@ matches the width in your product display mockup (prefix filename with lrg_).
 o Use laravel’s image intervention to resize and save your image
 
 # Capstone Deliverable #3 
-#### feature/XXXX 
+#### feature/cap2-shopping-cart-table
 🏗️ working ... <br />
 To keep track of the shopper, you must use session variables to identify them. You will 
 create a session_id and determine their IP address and set them as a session variables 
@@ -68,6 +68,7 @@ When you press the “add to cart” button, you will insert the item_id, the se
 address, and quantity of 1 into a table called shopping_cart. You will then redirect to a 
 shopping cart page.
 
+#### feature/cap2-shopping-cart-page
 🕛 waiting ...<br /> 
 On the shopping cart page, you will retrieve all items for that user and display the title, 
 quantity and price in a table. The only field that should be editable is the quantity field. 
