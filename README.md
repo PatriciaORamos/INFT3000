@@ -1,6 +1,6 @@
 # Capstone Deliverable #1
 #### ☕ feature/configuration ☕
-👍 Contem original project after run command and change file.
+✔️ Contem original project after run command and change file.
 <br />command: composer install
 <br />command: npm install
 <br />command: npm run dev
@@ -56,18 +56,20 @@ matches the width in your product display mockup (prefix filename with lrg_).
 o Use laravel’s image intervention to resize and save your image
 
 # Capstone Deliverable #3 
-#### feature/XXXX
-🏗️ working ... To keep track of the shopper, you must use session variables to identify them. You will 
+#### feature/XXXX 
+🏗️ working ... <br />
+To keep track of the shopper, you must use session variables to identify them. You will 
 create a session_id and determine their IP address and set them as a session variables 
 in your browser. If you cannot retrieve a session id and IP from the session variables, 
 you must set them up. This code should appear on every public page.
 
-🕛 waiting ... 
+🕛 waiting ...<br />
 When you press the “add to cart” button, you will insert the item_id, the session_id, IP 
 address, and quantity of 1 into a table called shopping_cart. You will then redirect to a 
 shopping cart page.
 
-🕛 waiting ... On the shopping cart page, you will retrieve all items for that user and display the title, 
+🕛 waiting ...<br /> 
+On the shopping cart page, you will retrieve all items for that user and display the title, 
 quantity and price in a table. The only field that should be editable is the quantity field. 
 To the right of the listing is an update and remove buttons. When update is pressed, you 
 will call a route called update_cart. The quantity is updated in the associated controller 
@@ -76,4 +78,5 @@ the shopping cart. When the remove button is pressed, you call the remove_item r
 delete the item from the shopping cart table in the associated controller method and 
 redirect back to the shopping cart
 
-🕛 waiting ...  At the bottom of the items, you should display the subtotal.
+🕛 waiting ... <br />
+At the bottom of the items, you should display the subtotal.
