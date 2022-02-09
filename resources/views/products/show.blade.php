@@ -24,7 +24,7 @@ Laravel Project
 				<img src="{{ Storage::url('images/items/lrg_'.$item->picture) }}" >
 			</div>
 			<div class="col-md-6">
-					<h2>Ergonomic Desk Sofa</h2>
+					<h2>{{$item->title}}</h2>
 					<h4 style="color: rgb(0, 157, 255);"><strong>${{$item->price}}</strong></h4>
 					<p style="color:rgb(99, 100, 101)" >{{strip_tags($item->description)}}</p>
 					<p style="color:rgb(99, 100, 101)">id: {{$item->id}}</p>
