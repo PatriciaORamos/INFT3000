@@ -9,8 +9,13 @@ Laravel Project
 @endsection
 
 @section('scripts')
-{!! Html::script('/bower_components/parsleyjs/dist/parsley.min.js') !!}
-{!!	Html::script('//cdn.ckeditor.com/4.14.0/standard/ckeditor.js') !!}
+	{!! Html::script('/bower_components/parsleyjs/dist/parsley.min.js') !!}
+	<script src="//cdn.tiny.cloud/1/om2xwb2ztrktqm7hundasw2t9cjhru9tcbtw5wtopmey57oz/tinymce/5/tinymce.min.js"></script>
+	<script>
+		tinymce.init({
+			selector: 'textarea'
+		});
+  </script>
 @endsection
 
 @section('css')
@@ -40,7 +45,7 @@ Laravel Project
 				</select>
 
 			    {{ Form::label('description', 'Description:', ['style'=>'margin-top:20px']) }}
-			    {{ Form::textarea('description', null, ['class'=>'ckeditor form-control', 'data-parsley-required'=>'']) }}
+			    {{ Form::textarea('description', null, ['class'=>'form-control', 'data-parsley-required'=>'']) }}
 
 				{{ Form::label('price', 'Price:', ['style'=>'margin-top:20px']) }}
 			    {{ Form::text('price', null, ['class'=>'form-control', 'style'=>'', 
@@ -55,7 +60,7 @@ Laravel Project
 											  'data-parsley-required'=>'']) }}
 
 				@if ($item->picture != "")
-				    <p style='margin-top:20px'>Current Image:<br><img src="{{ Storage::url('images/items/'.$item->picture) }}" style='height:100px;' ></p>
+				    <p style='margin-top:20px'>Current Image:<br><img src="{{ Storage::url('images/items/tn_'.$item->picture) }}" style='height:100px;' ></p>
 			  @endif
 
 				{{ Form::label('picture', 'Picture:', ['style'=>'margin-top:20px']) }}
