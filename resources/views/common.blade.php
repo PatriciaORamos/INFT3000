@@ -8,6 +8,8 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" />
     {!! Html::style('/css/styles.css') !!}
     @yield('css')
 
@@ -36,8 +38,11 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="{{ (Request::is('/')) ? "active" : "" }}"><a href="/">Home</a></li>
-            <li class="{{ Request::is('categories/*') || Request::is('categories') ? "active" : "" }}"><a href="/categories">Categories</a></li>
-            <li class="{{ Request::is('items/*') || Request::is('items') ? "active" : "" }}"><a href="/items">Items</a></li>
+            <li class="{{ Request::is('products/*') || Request::is('products') ? "active" : "" }}"><a href="/products">Products</a></li>
+            @auth
+              <li class="{{ Request::is('categories/*') || Request::is('categories') ? "active" : "" }}"><a href="/categories">Categories</a></li>
+              <li class="{{ Request::is('items/*') || Request::is('items') ? "active" : "" }}"><a href="/items">Items</a></li>
+            @endauth           
           </ul>
           <ul class="nav navbar-nav navbar-right">
           </ul>

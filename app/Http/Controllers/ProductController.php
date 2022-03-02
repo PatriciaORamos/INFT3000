@@ -98,6 +98,9 @@ class ProductController extends Controller
         $items = [];
         if($id != ""){
             $items = Item::all()->where('category_id', $id)->sortByDesc("id");
+            //validate if quantity is over 0
+            
+
             $categories = Category::all('name', 'id');
             return view('products.index')->with('items', $items)->with('categories', $categories);
         } else {            
