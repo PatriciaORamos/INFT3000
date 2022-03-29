@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ShoppingCart;
 use App\Item;
+use App\Category;
 use Session;
 
 class ShoppingController extends Controller
@@ -20,6 +21,8 @@ class ShoppingController extends Controller
         $subtotal = 0;
 
         if($itemsCart != null) {
+            $categories = Category::all()->sortBy('name');  
+
             foreach ($itemsCart as $itemCart) {
                 $item = Item::find($itemCart->item_id);
                 //quantity is replace by quantity of cart               
@@ -27,8 +30,10 @@ class ShoppingController extends Controller
                 array_push($items, $item);
                 $subtotal = $subtotal + ($item->quantity * $item->price);
             }
-            return view('shopping.index')->with('items', $items)->with('subtotal', $subtotal)->with('message', 'Success add into cart');
-        }        
+            return view('shopping.index')->with('items', $items)->with('subtotal', $subtotal)->with('categories', $categories);
+        } 
+
+             
     }
 
     public function store(Request $request) { 

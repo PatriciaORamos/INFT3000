@@ -8,62 +8,83 @@ Receipt
 Laravel Project
 @endsection
 
-@section('content')
-	
-	<div class="row">
-		<div class="col-md-12 col-md-offset-2">
-			<h1>Receipt</h1>
-		</div>
-		<div class="col-md-12 col-md-offset-2">
-			<hr />
-		</div>
-	</div>
+@section('css')
+{!! Html::style('/css/styleRec.css') !!}
+@endsection
 
-	<div class="row">
+@section('content')
+
+<div class="container">
+	<div class="invoice">
+		<div class="invoice-company text-inverse f-w-600">
+				CAPSTONE - IT Web Programming
+		</div>
+		<div class="invoice-header">
+			<div class="invoice-from">
+				<small>from</small>
+				<address class="m-t-5 m-b-5">
+					<strong class="text-inverse">Capstone</strong><br>
+					Nova Scotia - CA<br>
+				</address>
+			</div>
 			@foreach ($orders as $order)
-				<div class="col-md-8 col-md-offset-2">		
-						<p>CUSTOMER: <strong>{{$order->first_name.' '.$order->last_name}} </strong></p>						
-					</div>
-				<div class="col-md-2">					
-					<p>Date: {{(new \DateTime())->format('Y-m-d')}}</p>	
-					<p>phone:{{$order->phone}}</p>
-					<p>email:{{$order->email}}</p>
-					<p>{{$order->session_id}}</p>
+			<div class="invoice-to">
+				<small>to</small>							
+				<address class="m-t-5 m-b-5">								
+						<strong class="text-inverse">{{$order->first_name.' '.$order->last_name}}</strong><br>
+						Phone: {{$order->phone}}<br>
+						Email: {{$order->email}}
+				</address>								
 			</div>
-			@endforeach	
-			<div class="col-md-12 col-md-offset-2">
-				<hr />
+			<div class="invoice-date">
+				<small>Invoice</small>
+				<div class="date text-inverse m-t-5">{{ date('d-m-Y', $order->updated_at->timestamp) }}</div>
+				<div class="invoice-detail">
+					{{$order->session_id}}<br>
+				</div>
 			</div>
-	</div>
-	<div class="row">
-		<div class="col-md-12 col-md-offset-2">
-			<table class="table">
-				<thead>			
-					<th style="width:20%">Title</th>
-					<th>Description</th>
-					<th>SKU</th>
-					<th>Price</th>
-					<th>Quantity</th>					
-					<th>Subtotal</th>
+			@endforeach
+		</div>	
+	</div>		
+	<div class="invoice-content">
+		<div class="table-responsive">
+			 
+			<table class="table table-invoice">
+				<thead>
+					<tr>
+						<th scope="col">Title</th>
+						<th scope="col">Description</th>
+						<th scope="col">SKU</th>
+						<th scope="col">Price</th>
+						<th scope="col">Quantity</th>
+						<th scope="col">Subtotal</th>
+					</tr>
 				</thead>
 				<tbody>
-				@foreach ($itemsSold as $itemSold)
-					<tr>	
+					@foreach ($itemsSold as $itemSold)
+					<tr>
 						@foreach ($items as $item)
-							@if ($itemSold->item_id == $item->id)								
-								<th>{{$item->title}}</th>
-								<th>{{ strip_tags($item->description) }}</th>
-								<th>{{$item->sku}}</th>								
-							@endif
-						@endforeach
-						<th>${{ number_format($itemSold->item_price, 2) }}</th>		
-						<th>{{$itemSold->quantity}}</th>
-						
-						<th>${{ number_format( ($itemSold->quantity * $itemSold->item_price), 2) }}</th>
-					</tr>				
-				@endforeach
-				<tr><th></th><th></th><th></th><th></th><th>COST</th><th><strong>${{ number_format($cost,2)}}</th></tr>			
-		</div>		
-	</div>
-
+								@if ($itemSold->item_id == $item->id)		
+									<th scope="row">{{$item->title}}</th>
+									<td>{{ strip_tags($item->description) }}</td>
+									<td>{{$item->sku}}</td>
+								@endif
+						@endforeach								
+						<td>${{ number_format($itemSold->item_price, 2) }}</td>
+						<td>{{$itemSold->quantity}}</td>										
+						<td>${{ number_format( ($itemSold->quantity * $itemSold->item_price), 2) }}</td>							
+					</tr>
+					@endforeach
+				</tbody>
+			</table>
+		</div>
+		<div class="invoice-price">
+			<div class="invoice-price-left">
+			</div>
+			<div class="invoice-price-right">
+				 <small>TOTAL</small> <span class="f-w-600">${{ number_format($cost,2)}}</span>
+			</div>
+	 </div>
+	</div>		
+</div>
 @endsection

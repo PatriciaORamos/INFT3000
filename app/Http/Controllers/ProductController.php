@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $items = Item::all()->sortByDesc("id");
+        $items = Item::all()->sortBy("title");
         $categories = Category::all('name', 'id');
         return view('products.index')->with('items', $items)->with('categories', $categories);
     }

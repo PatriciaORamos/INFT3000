@@ -36,7 +36,7 @@ ul.navbar-nav li.active {
 	text-align: left;
 	padding: 7px;
 	border: 1px solid #ddd;
-	border-top: 3px solid #808080;
+	border-top: 3px solid rgb(159, 9, 9);
 	-moz-box-shadow: 0 0 3px 0 #ccc;
 	-webkit-box-shadow: 0 0 3px 0 #ccc;
 	box-shadow: 0 0 3px 0 #ccc;
@@ -51,11 +51,11 @@ ul.navbar-nav li.active {
 	text-align:center;
 	padding-bottom:15px;
 	position: relative;
-	background-color:#f8f8f8;
+	background-color:#ecebeb;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
-	border-bottom:1px solid #eee;
+	border-bottom:2px solid rgb(159, 9, 9);
 }
 
 .prod-img{
@@ -70,7 +70,7 @@ ul.navbar-nav li.active {
 	color:#111111;
 	display:inline-block;
 	font-weight:bold;
-	font-size:11px;
+	font-size:15px;
 	margin:15px 0 0px 0;
 }
 
@@ -79,6 +79,13 @@ ul.navbar-nav li.active {
 	font-weight:300;
 	padding:10px 0;
 }
+
+.cart-total {
+	text-align: right;
+	margin-right:30%;
+	font-size:30px;
+}
+
 
 @media (max-width: 768px){
 	.navbar-right {

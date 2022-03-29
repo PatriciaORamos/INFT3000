@@ -30,6 +30,17 @@ Laravel Project
 	</div>
 </div>
 <div class="row">
+	<div class="col-md-2 block">
+		<table>
+				<tr>
+						<th>CATEGORIES</th>
+				</tr>
+				<tr><td ><a href={{ URL::route('products.index') }}>All Categories</a></td></tr>
+				@foreach ($categories as $category)
+						<tr><td ><a href={{ route('products.search', $category->id) }}>{{$category->name}}</a></td></tr>
+				@endforeach 
+		</table>
+	</div>
 	<div class="col-md-8">
 		<table class="table">
 				<tr>
@@ -41,37 +52,39 @@ Laravel Project
 				</tr>
 				<tbody>
 					@foreach ($items as $item)		
-							<tr>
-								{!! Form::model($item, ['route'=> ['shopping.update_cart', $item->id], 'method' => 'PUT']) !!}
-									<td><p>{{ $item->title }}</p></td>									
-									<td>${{ number_format($item->price, 2) }}</td>
-									<td><input type="number" name="quantity" value="{{$item->quantity}}" min="1" /></td>
-									<td>${{ number_format(($item->quantity * $item->price), 2) }}</td>
-									<td>
-										<div style='float:left; margin-right:5px;'>									
-													{{ Form::submit('Update', ['class'=> 'btn btn-success btn-sm'])}}										
-										</div>
-									{!! Form::close() !!}
-									<div style="float:left; margin-left:5px">
-										{!! Form::open([
-																				'route'=> ['shopping.remove_item', $item->id], 
-																				'method' => 'DELETE', 
-																				'onsubmit' => 'return confirm("Delete product? Are you sure?")'
-																		]) !!}
-												{{ Form::submit('Delete', ['class'=>'btn btn-sm btn-danger']) }}
-										{!! Form::close() !!}
+						<tr>
+							{!! Form::model($item, ['route'=> ['shopping.update_cart', $item->id], 'method' => 'PUT']) !!}
+								<td><p>{{ $item->title }}</p></td>									
+								<td>${{ number_format($item->price, 2) }}</td>
+								<td><input type="number" name="quantity" value="{{$item->quantity}}" min="1" /></td>
+								<td>${{ number_format(($item->quantity * $item->price), 2) }}</td>
+								<td>
+									<div style='float:left; margin-right:5px;'>									
+												{{ Form::submit('Update', ['class'=> 'btn btn-sm btn-primary'])}}										
 									</div>
-								</td>							
-							</tr>
-					@endforeach	
+								{!! Form::close() !!}
+								<div style="float:left; margin-left:5px">
+									{!! Form::open([
+																			'route'=> ['shopping.remove_item', $item->id], 
+																			'method' => 'DELETE', 
+																			'onsubmit' => 'return confirm("Delete product? Are you sure?")'
+																	]) !!}
+											{{ Form::submit('Delete', ['class'=>'btn btn-sm btn-secondary']) }}
+									{!! Form::close() !!}
+								</div>
+							</td>							
+						</tr>
+					@endforeach			
 				</tbody>
 		</table>
+		<div class="cart-total">
+			<p>Total: $ {{ number_format($subtotal,2)}}</p>
+		</div>		
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-2">	
 		<h2>Order Summary</h2>
 		<div>
 			{!! Form::open([ 'route'=> ['orders.check_order'], 'method' => 'POST', 'id'=> 'post_order']) !!}
-					<p><strong>Subtotal:</strong> ${{ number_format($subtotal, 2) }} </p>
 					{{ Form::label('fname', 'First Name:', ['style'=>'margin-top:20px']) }}
 					{{ Form::text('fname', null, ['class'=>'form-control', 'data-parsley-required'=>'true']) }}
 					{{ Form::label('lname', 'Last Name:', ['style'=>'margin-top:20px']) }}
@@ -80,10 +93,9 @@ Laravel Project
 					{{ Form::number('phone', null,  ['class'=>'form-control', 'data-parsley-required'=>'true', 'data-parsley-length'=>'[10, 10]']) }}
 					{{ Form::label('email', 'Email:', ['style'=>'margin-top:20px']) }}
 					{{ Form::text('email', null, ['class'=>'form-control', 'type'=>'email', 'data-parsley-type'=>'email', 'data-parsley-required'=>'true']) }}
-					{{ Form::submit('Checkout', ['class'=>'btn btn-sm btn-warning']) }}
-			{!! Form::close() !!}
-			
+					{{ Form::submit('Checkout', ['class'=>'btn btn-sm btn-primary']) }}
+			{!! Form::close() !!}			
 		</div>
-	</div>
+	</div>	
 </div>
 @endsection

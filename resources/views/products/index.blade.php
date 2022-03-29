@@ -40,9 +40,9 @@ Laravel Project
 					@endforeach 
 			</table>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-10">
 			@foreach ($items as $item)	
-				<div class="col-6 col-md-4 prod">
+				<div class="col-6 col-md-4 prod">					
 					<a href={{ route('products.show', $item->id) }}><img src='{{ Storage::url('images/items/tn_'.$item->picture) }}' class="prod-img"></a>
 					<div class="prod-box" >
 							<a href={{ route('products.show', $item->id) }} class="title">{{ $item->title }}</a>

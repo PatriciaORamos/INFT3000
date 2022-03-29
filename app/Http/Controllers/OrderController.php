@@ -11,8 +11,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = OrderInfo::all();
-
+        $orders = OrderInfo::all();        
         return view('order.index')->with('orders', $orders);
     }
 

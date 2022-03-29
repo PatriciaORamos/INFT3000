@@ -143,21 +143,22 @@ class ItemController extends Controller
             
             $image = $request->file('picture');
             $filename = $image->getClientOriginalName();
-
-            //add new picture
-            $img_resize = Image::make($image->getRealPath());
-            $img_resize->resize(100,100);
-            $img_resize->save(public_path('storage/images/items/tn_'. $filename));
-
-            $img_resize_lrg = Image::make($image->getRealPath());
-            $img_resize_lrg->resize(400,400);
-            $img_resize_lrg->save(public_path('storage/images/items/lrg_'. $filename));
-
+         
             //remove old picture
             $old_img_pathTn = public_path('storage\images\items\tn_').$item->picture; 
             $old_img_pathLrg = public_path('storage\images\items\lrg_').$item->picture; 
             unlink($old_img_pathTn);
             unlink($old_img_pathLrg);     
+
+            //add new picture
+            $img_resize = Image::make($image->getRealPath());
+            $img_resize->resize(200, 200);
+            $img_resize->save(public_path('storage/images/items/tn_'. $filename));
+
+            $img_resize_lrg = Image::make($image->getRealPath());
+            $img_resize_lrg->resize(400,400);
+            $img_resize_lrg->save(public_path('storage/images/items/lrg_'. $filename));
+   
 
             $item->picture = $filename;   
         }
